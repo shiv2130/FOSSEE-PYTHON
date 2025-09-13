@@ -215,7 +215,7 @@ html, body {
     box-shadow: var(--shadow);
     margin-bottom: var(--spacing-lg); 
 
-
+}
 @media (max-width: 992px) {
     .page-container {
         padding: 0; 
@@ -269,5 +269,4 @@ html, body {
 body.sidebar-open .overlay {
     opacity: 1;
     visibility: visible;
-}
 }

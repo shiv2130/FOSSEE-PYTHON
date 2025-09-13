@@ -45,3 +45,10 @@ db.sqlite3
 #images/gif
 *.png
 *.gif
+
+# Virtual Environment
+venv/
+env/
+.venv/
+.env
+staticfiles/
