@@ -1,0 +1,233 @@
+/* General container and spacing */
+.workshop-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.welcome-section {
+    background-color: #ffffff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.welcome-heading {
+    color: #3b82f6;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.welcome-text {
+    color: #4b5563;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.main-heading {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Table styling */
+.table-section {
+    margin-bottom: 3rem;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.section-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #04a9cf;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    min-width: 600px;
+}
+
+.styled-table thead tr {
+    background-color: #eff6ff;
+    color: #3b82f6;
+    text-align: left;
+    font-weight: bold;
+}
+
+.styled-table th, .styled-table td {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: left; /* Ensure all cells are left-aligned */
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f9fafb;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f3f4f6;
+    cursor: pointer;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+.status-badge-accepted {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-badge-pending {
+    background-color: #fffbeb;
+    color: #92400e;
+}
+
+/* Action Button */
+.btn-action {
+    background-color: #3b82f6;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.btn-action:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+}
+
+/* Datepicker icon */
+.datepicker-icon {
+    color: #3b82f6;
+    cursor: pointer;
+    font-size: 1.2rem;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+}
+
+/* JQuery UI Datepicker overrides for a cleaner look */
+.ui-datepicker {
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.ui-datepicker .ui-datepicker-header {
+    background-color: #4a90e2;
+    border: none;
+    color: #ffffff;
+    border-radius: 8px 8px 0 0;
+    padding: 0.5rem;
+}
+
+.ui-datepicker .ui-datepicker-prev, .ui-datepicker .ui-datepicker-next {
+    color: #ffffff;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.ui-datepicker-calendar .ui-state-default {
+    background-color: transparent;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.ui-datepicker-calendar .ui-state-default:hover {
+    background-color: #f0f4f8;
+}
+
+.ui-datepicker-calendar .ui-state-active, .ui-datepicker-calendar .ui-state-highlight {
+    background-color: #4a90e2 !important;
+    color: #ffffff !important;
+    border-color: #4a90e2 !important;
+}
+
+/* Datepicker dialog form */
+.datepicker-dialog {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.datepicker-input {
+    border: 1px solid #e2e8f0;
+    padding: 0.75rem;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn-save {
+    background-color: #22c55e;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-save:hover {
+    background-color: #15803d;
+}
+
+/* Responsive Table */
+@media (max-width: 600px) {
+    .styled-table thead {
+        display: none;
+    }
+    .styled-table, .styled-table tbody, .styled-table tr, .styled-table td {
+        display: block;
+        width: 100%;
+    }
+    .styled-table tr {
+        margin-bottom: 1rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    .styled-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border: none;
+    }
+    .styled-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 1rem;
+        font-weight: bold;
+        text-align: left;
+        color: #4b5563;
+    }
+}

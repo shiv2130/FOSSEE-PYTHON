@@ -5,98 +5,118 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
-            <form method="GET">
+        <div class="col-lg-3">
+            <form method="GET" class="filter-form">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h3><u>Filters</u></h3>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="{% url 'statistics_app:public' %}" class="btn btn-outline-info">
-                                    <i class="fa fa-times"></i>&nbsp;Clear
-                                </a>
-                            </div>
-                        </div>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h3>Filters</h3>
+                        <a href="{% url 'statistics_app:public' %}" class="btn btn-secondary btn-sm">
+                            <i class="fa fa-times"></i>&nbsp;Clear
+                        </a>
                     </div>
                     <div class="card-body">
-                        <div>From date: {{form.from_date}}</div>
-                        <div>To date: {{form.to_date}}</div>
-                        <div>Workshop: {{form.workshop_type}}</div>
-                        <div>State: {{form.state}}</div>
-                        <div>{{form.sort.help_text}}: {{form.sort}}</div>
+                        <div class="form-group">
+                            <label>From date:</label>
+                            {{form.from_date}}
+                        </div>
+                        <div class="form-group">
+                            <label>To date:</label>
+                            {{form.to_date}}
+                        </div>
+                        <div class="form-group">
+                            <label>Workshop:</label>
+                            {{form.workshop_type}}
+                        </div>
+                        <div class="form-group">
+                            <label>State:</label>
+                            {{form.state}}
+                        </div>
+                        <div class="form-group">
+                            <label>{{form.sort.help_text}}:</label>
+                            {{form.sort}}
+                        </div>
                         {% if request.user.is_authenticated %}
-                        <div>{{form.show_workshops.help_text}}: {{form.show_workshops}}</div>
+                        <div class="form-group">
+                            <label>
+                                {{form.show_workshops}}
+                                {{form.show_workshops.help_text}}
+                            </label>
+                        </div>
                         {% endif %}
-                        <br>
-                        <div class="row justify-content-center">
-                            <div class="col-md-4">
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fa fa-eye"></i>&nbsp;View
-                                </button>
-                            </div>
-                            <div class="col-md-6">
-                                <button type="submit" class="btn btn-info" name="download" value="download">
-                                    <i class="fa fa-download"></i>&nbsp;Download
-                                </button>
-                            </div>
+                        
+                        <div class="filter-actions">
+                            <button type="submit" class="btn btn-primary flex-grow-1">
+                                <i class="fa fa-eye"></i>&nbsp;View
+                            </button>
+                            <button type="submit" class="btn btn-secondary flex-grow-1" name="download" value="download">
+                                <i class="fa fa-download"></i>&nbsp;Download
+                            </button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
-        <div class="col">
-            <div class="row">
-                <div class="col-md-6">
+
+        <div class="col-lg-9">
+            <div class="main-content-header">
+                <div class="paginator">
                     {% include "statistics_app/paginator.html" %}
                 </div>
-                <div class="col-md-3">
-                    <button class="btn btn-info" id="state_graph">
+                <div class="chart-buttons d-flex gap-2">
+                    <button class="btn btn-secondary" id="state_graph">
                         <i class="fa fa-bar-chart"></i>&nbsp;State chart
                     </button>
-                </div>
-                <div class="col-md-3">
-                    <button class="btn btn-info" id="type_graph">
+                    <button class="btn btn-secondary" id="type_graph">
                         <i class="fa fa-bar-chart"></i>&nbsp;Workshops chart
                     </button>
                 </div>
             </div>
-            <table class="table table-responsive-sm">
-                <thead>
-                    <tr>
-                        <th>Sr No.</th>
-                        <th>Coordinator Name</th>
-                        <th>Institute Name</th>
-                        <th>Instructor Name</th>
-                        <th>Workshop Name</th>
-                        <th>Workshop Date</th>
-                    </tr>
-                </thead>
-                {% csrf_token %}
-                {% for workshop in objects %}
-                    <tbody>
-                        <tr>
-                            <td>{{ forloop.counter0|add:objects.start_index}}</td>
-                            <td>{{ workshop.coordinator.get_full_name | capfirst }}</td>
-                            <td>{{ workshop.coordinator.profile.institute | capfirst }}</td>
-                            <td>{{ workshop.instructor.get_full_name | capfirst }}</td>
-                            <td>{{ workshop.workshop_type.name }}</td>
-                            <td>{{ workshop.date | date}}</td>
-                        </tr>
-                    </tbody>
-                {% endfor %}
-            </table>
-            {% include "statistics_app/paginator.html" %}
+
+            <div class="card">
+                <div class="table-responsive-sm">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Coordinator Name</th>
+                                <th>Institute Name</th>
+                                <th>Instructor Name</th>
+                                <th>Workshop Name</th>
+                                <th>Workshop Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for workshop in objects %}
+                            <tr>
+                                <td>{{ forloop.counter0|add:objects.start_index}}</td>
+                                <td>{{ workshop.coordinator.get_full_name | capfirst }}</td>
+                                <td>{{ workshop.coordinator.profile.institute | capfirst }}</td>
+                                <td>{{ workshop.instructor.get_full_name | capfirst }}</td>
+                                <td>{{ workshop.workshop_type.name }}</td>
+                                <td>{{ workshop.date | date}}</td>
+                            </tr>
+                        {% empty %}
+                            <tr>
+                                <td colspan="6" class="text-center py-5">No workshops found for the selected filters.</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="paginator mt-4">
+                 {% include "statistics_app/paginator.html" %}
+            </div>
         </div>
     </div>
 </div>
 
-<!-- The Modal -->
-<div id="dialog" title="Workshops Statistics">
+<div id="dialog" title="Workshops Statistics" style="display: none;">
     <canvas id="myChart"></canvas>
 </div>
 
+{# NOTE: The JavaScript block remains the same #}
+{% block javascript %}
 <script type="text/javascript">
     var state_labels = {{ws_states|safe}};
     var state_data = {{ws_count|safe}};
@@ -110,31 +130,37 @@
         show_graph(type_labels, type_data, "Type wise workshops");
     });
 
-    function show_graph(labels, data, graph_name, chart_name) {
+    function show_graph(labels, data, graph_name) {
         var ctx = document.getElementById('myChart').getContext('2d');
         if(chart) chart.destroy();
         chart = new Chart(ctx, {
-            // The type of chart we want to create
             type: 'bar',
-
-            // The data for our dataset
             data: {
                 labels: labels,
                 datasets: [{
                     data: data,
                     label: graph_name,
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgb(255, 99, 132)',
+                    backgroundColor: 'rgba(237, 175, 184, 0.6)',
+                    borderColor: 'rgba(237, 175, 184, 1)',
+                    borderWidth: 1
                 }]
             },
-            // Configuration options go here
-            options: {}
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
         });
         $("#dialog").dialog({
             width: 900,
-            height: 500
+            height: 500,
+            modal: true
         });
     }
 </script>
-
+{% endblock %}
 {% endblock %}
