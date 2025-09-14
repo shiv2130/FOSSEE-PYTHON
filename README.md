@@ -100,14 +100,14 @@ The challenging part of the task was to make the site **responsive** and also tr
 
 ## Comparision of Prev Vs Old version
 ## Old Version of Workshop-Status Page
-<img src="/Users/shivanshuprakash/Desktop/Project/workshop_booking/Screenshot 2025-09-14 at 3.26.30 PM.png" width="128"/>
+<img src="assets/Screenshot 2025-09-14 at 3.26.30 PM.png" width="128"/>
 
 ## New Version of Workshop-Status Page
-<img src = "/Users/shivanshuprakash/Desktop/Project/workshop_booking/Screenshot 2025-09-14 at 3.37.09 PM.png" width = "128">
+<img src = "assets/Screenshot 2025-09-14 at 4.00.53 PM.png" width = "128">
 
 ## Old Version of Workshop-Details Page
-<img src = "/Users/shivanshuprakash/Desktop/Project/workshop_booking/Screenshot 2025-09-14 at 3.48.36 PM.png" width = "128">
+<img src = "assets/Screenshot 2025-09-14 at 3.48.36 PM.png" width = "128">
 
 ## New Version of Workshop-Details Page
-<img src = "/Users/shivanshuprakash/Desktop/Project/workshop_booking/Screenshot 2025-09-14 at 3.46.27 PM.png" width = "128">
+<img src = "assets/Screenshot 2025-09-14 at 3.46.27 PM.png" width = "128">
 
