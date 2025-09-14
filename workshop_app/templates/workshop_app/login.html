@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block extra_css %}
+    {% comment %} Added new css file for the login page to make it look good and minimal {% endcomment %}
     <link rel="stylesheet" href="{% static 'workshop_app/css/login.css' %}">
 {% endblock %}
 
@@ -38,9 +39,8 @@
             </div>
             <button type="submit" class="btn btn-primary" style="margin-top: 1.5rem;">Sign In</button>
         </form>
-
         <div class="extra-links">
-            <a href="{% url 'workshop_app:register' %}">New around here? Sign up</a>
+            <a href="{% url 'workshop_app:register' %}">Sign up</a>
             <a href="{% url 'password_reset' %}">Forgot password?</a>
         </div>
     </div>
