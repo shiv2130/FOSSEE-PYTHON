@@ -96,3 +96,10 @@ I tried to made up few trade-Offs in the project which is the **fonts** , the **
 ## 4.What was the most challenging part of the task and how did you approach it?
 
 The challenging part of the task was to make the site **responsive** and also trying to build a **minimal site** with a good touch of beauty and also to make it a **clean** one so that the user can navigate through the site without any issues and also figuring out the **admin side** and the **instructor/co-ordinator side** of the website and **designing the two sides simultaneously**, although I love the journey of designing this site because without any challenge it's unable to achieve the goals and I also being a **2nd-Year Student** I learned how I can work upon these kind of pre-made projects and can make changes in it. 
+
+
+## Comparision of Prev Vs Old version
+![Old Version of Workshop-Status Page](/Users/shivanshuprakash/Desktop/Screenshot 2025-09-14 at 3.26.30 PM)
+
+![New Version of Workshop-Status Page](/Users/shivanshuprakash/Desktop/Screenshot 2025-09-14 at 3.37.09 PM.png)
+
