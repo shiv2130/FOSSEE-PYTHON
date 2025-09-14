@@ -1,32 +1,29 @@
 {% extends 'workshop_app/base.html' %}
+{% load static %}
 
 {% block title %}
-    View Workshop details
+    View Workshop Details
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h2 class="text-center m-3">Workshop Details</h2>
-        <table class="table table-hover">
-            <tr class="d-flex">
-                <th class="col-3">Workshop Name :</th>
-                <td class="col">{{ workshop_type.name }}</td>
-            </tr>
-            <tr class="d-flex">
-                <th class="col-3">Duration :</th>
-                <td class="col">{{ workshop_type.duration }} day(s)</td>
-            </tr>
-            <tr class="d-flex">
-                <th class="col-3">Description :</th>
-                <td class="col">{{ workshop_type.description }}</td>
-            </tr>
-            <tr class="d-flex">
-                <th class="col-3">Terms and Conditions :</th>
-                <td class="col">{{ workshop_type.terms_and_conditions }}</td>
-            </tr>
-        </table>
+<div class="card details-container">
+    <div class="details-header">
+        <h2>{{ workshop_type.name }}</h2>
+        <p class="duration">Duration: {{ workshop_type.duration }} day(s)</p>
     </div>
 
+    <div class="details-section">
+        <h3>Description</h3>
+        <div class="details-content">
+            {{ workshop_type.description|linebreaksbr }}
+        </div>
+    </div>
+
+    <div class="details-section">
+        <h3>Terms and Conditions</h3>
+        <div class="details-content">
+            {{ workshop_type.terms_and_conditions|linebreaksbr }}
+        </div>
+    </div>
+</div>
 {% endblock %}
-
-
