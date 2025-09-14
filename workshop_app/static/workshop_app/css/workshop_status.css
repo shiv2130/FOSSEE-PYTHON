@@ -1,6 +1,3 @@
-/* static/workshop_app/css/workshop_status.css */
-
-/* --- Page Structure --- */
 .page-header {
     font-size: 1.5rem;
     font-weight: 600;
@@ -15,12 +12,10 @@
     gap: var(--spacing-lg);
 }
 
-/* --- Workshop Card Styling --- */
 .workshop-card {
-    /* The "Glassy" or "Frosted Glass" effect */
     background-color: var(--bg-card);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    -webkit-backdrop-filter: blur(10px); 
     
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--border-radius);
@@ -86,7 +81,6 @@
     margin-top: auto; /* Pushes footer to the bottom of the card */
 }
 
-/* --- Badges and Buttons --- */
 .status-badge {
     padding: 0.4rem 0.9rem;
     border-radius: 20px;

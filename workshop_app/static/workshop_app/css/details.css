@@ -1,0 +1,102 @@
+.details-container {
+     max-width: 900px; /*Added for better readibility */
+    margin: 2rem auto;
+}
+
+/* --- Workshop Details Card --- */
+.details-card {
+    padding: 2rem 2.5rem;
+}
+.details-list {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 1rem 1.5rem;
+    align-items: center;
+}
+.details-list dt { /* Label (e.g., "Date:") */
+    font-weight: 600;
+    color: var(--text-light);
+    text-align: right;
+}
+.details-list dd { /* Value (e.g., "Aug. 30, 2025") */
+    margin: 0;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+/* --- Comment Form Card --- */
+.comment-form-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.comment-form-card .card-header h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.comment-form-card .public-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.comment-form-card .form-body {
+    padding: 1.5rem;
+}
+.comment-form-card textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #F9F5F3;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+.comment-form-card .form-actions {
+    padding: 1rem 1.5rem;
+    text-align: right;
+    border-top: 1px solid var(--border-color);
+    background-color: #fcfaf9;
+}
+
+.comments-section {
+    margin-top: 3rem;
+}
+.comments-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.comment-card {
+    margin-bottom: 1.5rem;
+}
+.comment-card .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1.5rem;
+    background-color: #F9F5F3;
+}
+.comment-author a {
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--text-dark);
+}
+.comment-date {
+    margin-left: auto; /* Pushes the date to the far right */
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+.comment-card .card-body {
+    padding: 1.5rem;
+    line-height: 1.7;
+}
+
+.status-badge { padding: 0.4rem 0.9rem; border-radius: 20px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase; }
+.status-badge.accepted { background-color: #d1e7dd; color: #0f5132; }
+.status-badge.pending { background-color: #fff3cd; color: #664d03; }
+.status-badge.hidden { background-color: #e2e8f0; color: #475569; font-size: 0.7rem; }
