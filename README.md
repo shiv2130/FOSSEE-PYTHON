@@ -100,7 +100,7 @@ The challenging part of the task was to make the site **responsive** and also tr
 
 ## Comparision of Prev Vs Old version
 ## Old Version of Workshop-Status Page
-<img src="assets/Screenshot 2025-09-14 at 3.26.30 PM.png" width="128"/>
+<img src="/Users/shivanshuprakash/Desktop/Project/workshop_booking/assets/Screenshot 2025-09-14 at 3.26.30 PM.png" width="128"/>
 
 ## New Version of Workshop-Status Page
 <img src = "assets/Screenshot 2025-09-14 at 4.00.53 PM.png" width = "128">
