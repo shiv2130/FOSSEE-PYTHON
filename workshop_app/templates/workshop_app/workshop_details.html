@@ -1,84 +1,81 @@
 {% extends 'workshop_app/base.html' %}
+{% load static %}
 
 {% block title %}
     View Workshop details
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <table class="table table-bordered">
-            <tr>
-                <th><label for="id_first_name">Workshop Type :</label></th>
-                <td><label for="id_first_name"><a
-                        href="{% url 'workshop_app:workshop_type_details' workshop.workshop_type_id %}">{{ workshop.workshop_type }}</a></label>
-                </td>
-            </tr>
-            <tr>
-                <th><label for="id_last_name">Date :</label></th>
-                <td><label for="id_last_name">{{ workshop.date }}</label></td>
-            </tr>
-            <tr>
-                <th><label for="id_email">Coordinator :</label></th>
-                <td><label for="id_email">{{ workshop.coordinator.get_full_name|title }}</label>
-                </td>
-            </tr>
-            {% if workshop.status %}
-                <tr>
-                    <th><label for="id_institute">Status :</label></th>
-                    <td><span class="badge badge-success">{{ workshop.get_status }}</span></td>
-                </tr>
-                <tr>
-                    <th><label for="id_phone_number">Instructor :</label></th>
-                    <td><label for="id_email">{{ workshop.instructor.get_full_name|title }}</label>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <th><label for="id_institute">Status :</label></th>
-                    <td><span class="badge badge-warning">{{ workshop.get_status }}</span></td>
-                </tr>
+<div class="details-container">
+    <div class="card details-card">
+        <dl class="details-list">
+            <dt>Workshop Type:</dt>
+            <dd><a href="{% url 'workshop_app:workshop_type_details' workshop.workshop_type_id %}" class="action-link">{{ workshop.workshop_type }}</a></dd>
+
+            <dt>Date:</dt>
+            <dd>{{ workshop.date|date:"F j, Y" }}</dd>
+
+            <dt>Coordinator:</dt>
+            <dd>{{ workshop.coordinator.get_full_name|title }}</dd>
+
+            <dt>Status:</dt>
+            <dd>
+                {% if workshop.status %}
+                    <span class="status-badge accepted">{{ workshop.get_status }}</span>
+                {% else %}
+                    <span class="status-badge pending">{{ workshop.get_status }}</span>
+                {% endif %}
+            </dd>
+
+            {% if workshop.instructor %}
+                <dt>Instructor:</dt>
+                <dd>{{ workshop.instructor.get_full_name|title }}</dd>
             {% endif %}
-        </table>
-        <br>
-        <div class="container">
-            <div class="card mt-2 mb-5">
-                <form method="post">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="mx-3 font-weight-bold">Post a comment</div>
-                            {% if request.user.profile.position == 'instructor' %}
-                                <div class="ml-5">{{ form.public }} Public</div>
-                                <div class="ml-1 text-muted">(Non-public comments are visible only to instructors)</div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        {{ form.comment }}
-                    </div>
-                    <button type="submit" class="float-right btn btn-primary btn-md m-2">Post</button>
-                </form>
-            </div>
-            <br><br>
-            <h2 class="text-center">Comments</h2>
-            <br>
-            {% for comment in workshop_comments %}
-                <div class="card my-2">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="ml-3 font-weight-bold"><a
-                                    href="{% url 'workshop_app:view_profile' comment.author_id %}">{{ comment.author }}</a></div>
-                            {% if not comment.public %}
-                                <div class="ml-1"><span class="badge badge-dark">Hidden</span></div>
-                            {% endif %}
-                            <div class="ml-3 text-muted">{{ comment.created_date }}</div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p>{{ comment.comment }}</p>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
+        </dl>
     </div>
 
+    <div class="card comment-form-card">
+        <form method="post">
+            {% csrf_token %}
+            <div class="card-header">
+                <h4>Post a comment</h4>
+                {% if request.user.profile.position == 'instructor' %}
+                    <div class="public-option">
+                        {{ form.public }}
+                        <label for="{{ form.public.id_for_label }}">Public</label>
+                        <small class="text-muted">(Hidden comments are visible only to instructors)</small>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-body">
+                {{ form.comment }}
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Post</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="comments-section">
+        <h2>Comments</h2>
+        {% for comment in workshop_comments %}
+            <div class="card comment-card">
+                <div class="card-header">
+                    <div class="comment-author">
+                        <a href="{% url 'workshop_app:view_profile' comment.author_id %}">{{ comment.author }}</a>
+                    </div>
+                    {% if not comment.public %}
+                        <span class="status-badge hidden">Hidden</span>
+                    {% endif %}
+                    <div class="comment-date">{{ comment.created_date|date:"F j, Y, P" }}</div>
+                </div>
+                <div class="card-body">
+                    {{ comment.comment|linebreaksbr }}
+                </div>
+            </div>
+        {% empty %}
+            <p style="color: var(--text-light); text-align: center;">No comments yet.</p>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
