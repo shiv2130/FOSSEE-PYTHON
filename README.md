@@ -52,10 +52,11 @@ Make sure you have **Python (3.8+)** and **Git** installed on your system.
     This will set up your local SQLite database and create the necessary tables.
 
     ```bash
+    python manage.py makemigrations
     python manage.py migrate
     ```
 
-6.  **Create a superuser (optional):**
+6.  **Create a superuser:**
     This allows you to access the Django admin dashboard.
 
     ```bash
@@ -63,6 +64,9 @@ Make sure you have **Python (3.8+)** and **Git** installed on your system.
     ```
 
     Follow the prompts to create your admin account.
+    
+7. Go to Groups and create one group called instructor and give it all permissions.
+By default when a user registers, he is assigned a coordinator position, using the admin panel set the required users profile position as instructor and add him/her in instructor group along with the required permissions. Under settings.py file see to it that all required variables are set then you're good to go!
 
 -----
 
