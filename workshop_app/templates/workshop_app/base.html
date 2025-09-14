@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% comment %} In this whole html file a change of code is there sidebars are added and also new classes are added but the details are same just to keep the site look much cleaner {% endcomment %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FOSSEE Workshops Dashboard</title>
@@ -14,9 +15,11 @@
       <link rel="stylesheet" href="{% static 'workshop_app/css/login.css' %}">
       <link rel="stylesheet" href="{% static 'workshop_app/css/workshop_status.css' %}">
     <link rel="stylesheet" href="{% static 'workshop_app/css/base2.css' %}">
+     <link rel="stylesheet" href="{% static 'workshop_app/css/profile.css' %}"> 
+    <link rel="stylesheet" href="{% static 'workshop_app/css/registration.css' %}">
 </head>
 <body>
-    
+    {% comment %} Added new sidebars and overlaying screen for the responsiveness of the site and for a new touch  {% endcomment %}
     <div class="page-container">
         <div class="overlay" id="overlay"></div>
         <nav class="sidebar">
@@ -40,7 +43,7 @@
                 {% endif %}
             </ul>
         </nav>
-        
+        {% comment %} Changed the classes for the new css and hamburger menu {% endcomment %}
         <div class="main-content-wrapper">
             <header class="main-header">
                 <button class="hamburger-menu" id="hamburger-menu">
@@ -67,7 +70,7 @@
             <main class="content">
                 {% block content %}{% endblock %}
             </main>
-
+       {% comment %} Added a new footer {% endcomment %}
             <footer class="footer">
                 <p>&copy; {% now "Y" %} FOSSEE Workshops. All rights reserved.</p>
             </footer>
